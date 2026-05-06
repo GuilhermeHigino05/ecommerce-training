@@ -1,4 +1,4 @@
-var mysql = require('mysql2');
+import mysql from 'mysql2';
 
 class Database {
 
@@ -59,7 +59,7 @@ class Database {
 
 }
 
-module.exports = Database;
+export default Database;
 
 
 
