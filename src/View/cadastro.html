@@ -3,25 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Create a new account">
+    <title>Register | E-Commerce</title>
+    <link rel="stylesheet" href="/css/auth.css">
 </head>
 <body>
-    <h1>Welcome to register</h1>
-    <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button id="register" type="button">button</button>
-    </form>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">✨</div>
+                <h1>Create Account</h1>
+                <p>Join us and start shopping today</p>
+            </div>
+
+            <div id="auth-message" class="auth-message"></div>
+
+            <form class="auth-form">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+                <button id="register" class="auth-btn" type="button">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="/user/login">Sign in</a></p>
+            </div>
+        </div>
+    </div>
     <script src="/js/register.js"></script>
 </body>
 </html>

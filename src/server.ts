@@ -23,8 +23,7 @@ app.use('/user', userRoute);
 let auth = new AuthMiddleware();
 app.use(auth.verifyUserLogIn);
 app.use('/', homeRoute);
-
-app.use('/admin/products', productsRoute)
+app.use('/admin/products', auth.verifyAdminOnly, productsRoute)
 
 app.listen(port, () => {
   console.log(`Servidor rodando ! http://localhost:${port}`);

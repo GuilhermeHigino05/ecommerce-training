@@ -1,6 +1,7 @@
 import Database from "../../Database/database";
 
 
+
 class UserModel{
     private id?: number;
     private name?: string;
@@ -37,15 +38,15 @@ class UserModel{
         const result = database.ExecutaComando(sql,values);
         return result;
     }
-    public async Login(name: string, email: string, password: string){
-        const sql = 'select * from tb_user where tb_user_name = ? and tb_user_email = ? and tb_user_password = ?';
-        const values = [name, email, password];
+    public async Login(name: string, email: string){
+        const sql = 'select * from tb_user where tb_user_name = ? and tb_user_email = ?';
+        const values = [name, email];
         const database = new Database();
         const result = await database.ExecutaComando(sql,values);
         if(result.length == 0){
             return false;
         }else{
-            return result[0].tb_user_id;
+            return result[0];
         }
     }
 }

@@ -3,24 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Login to your account">
+    <title>Login | E-Commerce</title>
+    <link rel="stylesheet" href="/css/auth.css">
 </head>
 <body>
-    <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button id="login" type="button">button</button>
-    </form>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">🔐</div>
+                <h1>Welcome Back</h1>
+                <p>Sign in to continue to your account</p>
+            </div>
 
-    <p>Don't have acount?</p>
-    <a href="/user/register">Register</a>
+            <div id="auth-message" class="auth-message"></div>
+
+            <form class="auth-form">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button id="login" class="auth-btn" type="button">Sign In</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="/user/register">Create one</a></p>
+            </div>
+        </div>
+    </div>
     <script src="/js/login.js"></script>
 </body>
 </html>
