@@ -1,0 +1,143 @@
+/* src/public/css/tokio_night.css */
+/* Tokio Night dark theme – curated color palette */
+:root {
+  --primary-h: 210;   /* hue for blues */
+  --primary-s: 30%;
+  --primary-l: 20%;
+  --bg-h: 220;       /* background hue */
+  --bg-s: 15%;
+  --bg-l: 12%;
+  --accent-h: 170;   /* accent teal */
+  --accent-s: 40%;
+  --accent-l: 30%;
+  --text-h: 0;
+  --text-s: 0%;
+  --text-l: 95%;
+}
+
+/* Base reset & typography */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background: hsl(var(--bg-h), var(--bg-s), var(--bg-l));
+  color: hsl(var(--text-h), var(--text-s), var(--text-l));
+  scroll-behavior: smooth;
+}
+
+/* Import Inter from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: hsla(var(--bg-h), var(--bg-s), calc(var(--bg-l) + 5%), 0.85);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+header .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+}
+header nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+header nav a:hover {
+  color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: hsla(var(--bg-h), var(--bg-s), calc(var(--bg-l) + 5%), 0.85);
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+/* Hero carousel – simple CSS animation placeholder */
+.hero {
+  position: relative;
+  height: 300px;
+  background: linear-gradient(135deg, hsl(var(--primary-h), var(--primary-s), 25%), hsl(var(--primary-h), var(--primary-s), 15%));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--text-h), var(--text-s), var(--text-l));
+  font-size: 2rem;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+/* Product grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+.card {
+  background: hsla(var(--bg-h), var(--bg-s), var(--bg-l), 0.45);
+  border-radius: 12px;
+  padding: 1rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+.card img {
+  max-width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+.card .title {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+.card .price {
+  font-weight: 700;
+  color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+}
+
+/* Micro‑animation for discount badge */
+.badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: hsl(0, 70%, 50%);
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

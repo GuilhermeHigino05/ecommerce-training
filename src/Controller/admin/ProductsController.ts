@@ -8,20 +8,14 @@ class ProductsController {
         const list = await product.List();
         res.render('admin/products/list.html', { products: list });
     }
-
-
-
     public async CreateView(req: Request, res: Response) {
         res.render('admin/products/create.html');
     }
-
     public async Create(req: Request, res: Response) {
         const { name, price, description} = req.body;
         const img = req.file;
         let ok = false;
         let msg = '';
-
-
         try {
             if (!name || !price || !description || !img) {
                 res.status(400).send({ ok: false, msg: 'Dados inválidos' })
@@ -40,5 +34,4 @@ class ProductsController {
         }
     }
 }
-
 export default ProductsController

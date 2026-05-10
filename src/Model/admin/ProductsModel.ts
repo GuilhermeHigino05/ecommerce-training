@@ -63,6 +63,14 @@ class ProductModel{
         return result;
     }
 
+    public async Delete(id: number){
+        const sql = "update Product set tb_pro_status = 'inativo' where tb_pro_id = ?";
+        const values = [id];
+        const banco = new Database();
+        const result = await banco.ExecutaComando(sql, values);
+        return result;
+    }
+
 
 }
 

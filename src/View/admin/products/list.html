@@ -213,8 +213,8 @@
                             <td><%= product.tb_pro_description %></td>
                             <td>
                                 <div class="actions">
-                                    <button class="btn-edit">✏️ Editar</button>
-                                    <button class="btn-delete">🗑️ Excluir</button>
+                                    <a href="/admin/products/alter?id=<%= product.tb_pro_id %>"class="btn-edit">✏️ Editar</a>
+                                    <button class="btn-delete" data-id="<%= product.tb_pro_id %>">🗑️ Excluir</button>
                                 </div>
                             </td>
                         </tr>

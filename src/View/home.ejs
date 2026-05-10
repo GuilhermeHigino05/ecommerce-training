@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketplace – Home</title>
+  <meta name="description" content="Discover thousands of products at unbeatable prices. Shop the latest deals and enjoy fast, secure checkout.">
+  <link rel="stylesheet" href="/css/tokio_night.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">E‑Shop</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/products">Products</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+  <main>
+    <div class="hero">
+      <h1>Welcome to E‑Shop</h1>
+    </div>
+    <section class="product-grid">
+      <% if (products) { %>
+        <% products.forEach(value => { %>
+          <div class="card">
+            <% if (value.tb_pro_img) { %>
+              <img src="<%= value.tb_pro_img %>" alt="<%= value.tb_pro_name %>" />
+            <% } else { %>
+              <div style="height:150px;background:#555;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;color:#fff;">No Image</div>
+            <% } %>
+            <div class="title"><%= value.tb_pro_name %></div>
+            <div class="price">$<%= value.tb_pro_price %></div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p>No products available.</p>
+      <% } %>
+    </section>
+  </main>
+  <footer>
+    © 2026 E‑Shop. All rights reserved.
+  </footer>
+
+</body>
+</html>
