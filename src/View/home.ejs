@@ -15,6 +15,11 @@
       <a href="/">Home</a>
       <a href="/products">Products</a>
       <a href="/about">About</a>
+      <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#modalCarrinho">
+          <i class="bi-cart-fill me-1"></i>
+              Carrinho
+          <span id="contadorCarrinho" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+      </button>
     </nav>
   </header>
   <main>
@@ -32,16 +37,39 @@
             <% } %>
             <div class="title"><%= value.tb_pro_name %></div>
             <div class="price">$<%= value.tb_pro_price %></div>
+            <div> <button type="button" data-id="<%= value.tb_pro_id %>" class="btn btn-outline-dark>addToCart</button> </div>
           </div>
         <% }); %>
       <% } else { %>
         <p>No products available.</p>
       <% } %>
     </section>
+    <div class="modal fade modal-lg" id="modalCarrinho" tabindex="-1" aria-labelledby="modalCarrinhoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCarrinhoLabel">Carrinho de compras</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalCarrinhoCorpo">
+                ...
+            </div>
+            <div style="display: flex; justify-content: space-between;" class="modal-footer">
+                <div>
+                    <h3 id="valorTotalPedido">Valor total do pedido: R$ 0,00</h3>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Confirmar</button>               
+                </div>
+              </div>
+            </div>
+        </div>
   </main>
   <footer>
     © 2026 E‑Shop. All rights reserved.
   </footer>
 
 </body>
+<script src="/js/cartmodal.js"></script>
 </html>
