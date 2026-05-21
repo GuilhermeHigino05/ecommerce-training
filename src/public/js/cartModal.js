@@ -1,4 +1,3 @@
-const { LOADIPHLPAPI } = require("dns");
 
 document.addEventListener('DOMContentLoaded', () => {
     let listaCarrinho = [];

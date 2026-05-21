@@ -70,7 +70,15 @@ class ProductModel{
         const sql = "update tb_product set tb_pro_status = 'inativo' where tb_pro_id = ?";
         const values = [id];
         const data = new Database();
-        const result = await data.ExecutaComando(sql, values);
+        const result = await data.ExecutaComandoNonQuery(sql, values);
+        return result;
+    }
+
+    public async RemoveQtd(id: number, qtd: number){
+        const sql = 'update tb_product set tb_pro_qtd = tb_pro_qtd - ? where tb_pro_id = ?'
+        const values =[qtd, id];
+        const data = new Database();
+        const result = await data.ExecutaComandoNonQuery(sql,values);
         return result;
     }
 
