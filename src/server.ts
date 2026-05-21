@@ -11,6 +11,8 @@ import AuthMiddleware from './middleware/authMiddleware';
 // @ts-ignore
 import cookieParser from 'cookie-parser';
 
+(global as any).PATH_FROM_IMAGE = '/img'
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('src/public'));

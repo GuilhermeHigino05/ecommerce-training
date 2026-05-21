@@ -1,9 +1,11 @@
-import Database from '../../Database/database.js';
 
+import Database from '../../Database/database.js';
+import fs from 'fs'
 class ProductModel{
     private id: number;
     private nome: string;
     private preco: number;
+    private quantidade: number;
     private descricao: string;
     private imagem: string;
 
@@ -40,38 +42,59 @@ class ProductModel{
         this.imagem = imagem;
     }
 
-    constructor(id: number, nome: string, preco: number, descricao: string, imagem: string) {
+    constructor(id: number, nome: string, preco: number,quantidade: number, descricao: string, imagem: string) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
+        this.quantidade = quantidade
         this.descricao = descricao;
         this.imagem = imagem;
     }
 
     public async Create(){
-        const sql = 'insert into Product (tb_pro_id, tb_pro_name, tb_pro_price, tb_pro_description, tb_pro_img) values (?, ?, ?, ?, ?)'
-        const values = [this.id,this.nome, this.preco, this.descricao, this.imagem];
-        const banco = new Database();
-        const result = await banco.ExecutaComandoLastInserted(sql, values);
+        const sql = 'insert into tb_product (tb_pro_id, tb_pro_name, tb_pro_price, tb_pro_description, tb_pro_qtd, tb_pro_img) values (?, ?, ?, ?, ?, ?)'
+        const values = [this.id,this.nome, this.preco, this.descricao, this.quantidade, this.imagem];
+        const data = new Database();
+        const result = await data.ExecutaComandoLastInserted(sql, values);
         return result
     }
 
     public async List(){
-        const sql = 'select * from Product';
-        const banco = new Database();
-        const result = await banco.ExecutaComando(sql);
+        const sql = 'select * from tb_product';
+        const data = new Database();
+        const result = await data.ExecutaComando(sql);
         return result;
     }
 
     public async Delete(id: number){
-        const sql = "update Product set tb_pro_status = 'inativo' where tb_pro_id = ?";
+        const sql = "update tb_product set tb_pro_status = 'inativo' where tb_pro_id = ?";
         const values = [id];
-        const banco = new Database();
-        const result = await banco.ExecutaComando(sql, values);
+        const data = new Database();
+        const result = await data.ExecutaComando(sql, values);
         return result;
     }
 
+    public async GetProduct(id: number){
+        const sql = `select * from tb_product where tb_pro_id = ?`;
+        const values = [id];
+        const data = new Database();
+        let rows = await data.ExecutaComando(sql,values);
+        if(rows && rows.length>0){
+            return rows[0];
+        }
+        return null;
+    }
 
+        toJSON() {
+            return {
+                id: this.id,
+                tb_pro_id: this.id,
+                tb_pro_name: this.nome,
+                tb_pro_price: this.preco,
+                tb_pro_img: this.imagem,
+                descricao: this.descricao
+            }
+        }
 }
 
 export default ProductModel;

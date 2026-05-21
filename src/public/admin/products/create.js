@@ -26,7 +26,9 @@ function createProduct() {
         const priceInput = document.getElementById('price');
         priceInput.style.borderColor = '#ce3dacc';
         const descriptionInput = document.getElementById('description');
+        const quantityInput = document.getElementById('quantity');
         descriptionInput.style.borderColor = '#ce3dacc';
+        quantityInput.style.borderColor = '#ce3dacc';
         const img = document.getElementById('img') ;
         img.style.borderColor = '#ce3dacc';
 
@@ -45,12 +47,17 @@ function createProduct() {
             listaValid.push('description')
         }
 
+        if (quantityInput?.value == '') {
+            listaValid.push('quantity')
+        }
+
         if(listaValid.length == 0){
 
             let formData = new FormData();
             formData.append('name', nameInput?.value ?? '');
             formData.append('price', priceInput?.value ?? '');
             formData.append('description', descriptionInput?.value ?? '');
+            formData.append('quantity', quantityInput?.value ?? '');
             formData.append('img', img?.files?.[0] ?? '');
             
             fetch('/admin/products/create', {
